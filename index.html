@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Koreofficielkachpro - Ousman</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { background: #0a0a0a; color: white; font-family: Arial; margin: 0; }
+    .header { background: linear-gradient(90deg, #00ff00, #ffd700); color: black; padding: 20px; text-align: center; }
+    .header h1 { margin: 5px; font-size: 22px; }
+    .header p { margin: 3px; font-weight: bold; }
+    .solde-box { background: #1a1a1a; padding: 20px; margin: 15px; border-radius: 15px; text-align: center; border: 2px solid #00ff00; }
+    .solde { color: #00ff00; font-weight: bold; font-size: 40px; }
+    .video-grid { padding: 15px; }
+    .video-box { background: #1a1a1a; padding: 15px; border-radius: 15px; margin-bottom: 20px; border: 2px solid #333; }
+    iframe { width: 100%; height: 220px; border-radius: 10px; border: none; }
+    .prix { color: #00ff00; font-size: 24px; font-weight: bold; margin-top: 10px; }
+    #login { text-align: center; padding: 80px 20px; }
+    #login input { padding: 12px; font-size: 16px; border-radius: 8px; border: none; width: 80%; margin: 10px 0; }
+    #login button { background: #00ff00; color: black; padding: 12px 30px; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<div id="login">
+  <h1>Koreofficielkachpro</h1>
+  <h3>Accès Service Client</h3>
+  <input type="password" id="mdp" placeholder="Entrez le mot de passe">
+  <br>
+  <button onclick="checkMdp()">Entrer</button>
+</div>
+
+<div id="app" style="display:none;">
+  <div class="header">
+    <h1>Kore Officiel - Service Client</h1>
+    <h2>Ousman</h2>
+    <p>+22952681981</p>
+    <button onclick="deconnexion()" style="background:red; color:white; border:none; padding:8px 15px; border-radius:5px;">Déconnexion</button>
+  </div>
+
+  <div class="solde-box">
+    Mon Solde Actuel<br>
+    <span class="solde" id="solde">0f</span>
+  </div>
+
+  <div class="video-grid">
+    <!-- 10 VIDEOS YOUTUBE CHOISIES POUR TOI -->
+    <div class="video-box"><h4>Vidéo 1</h4><iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" onload="this.onload=null" allowfullscreen></iframe><button onclick="addMoney(1)">J'ai fini de regarder + 3200f</button><div class="prix">+ 3200f</div></div>
+    
+    <div class="video-box"><h4>Vidéo 2</h4><iframe src="https://www.youtube.com/embed/jNQXAC9IVRw" allowfullscreen></iframe><button onclick="addMoney(2)">J'ai fini de regarder + 3200f</button><div class="prix">+ 3200f</div></div>
+    
+    <div class="video-box"><h4>Vidéo 3</h4><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe><button onclick="addMoney(3)">J'ai fini de regarder + 3200f</button><div class="prix">+ 3200f</div></div>
+    
+    <div class="video-box"><h4>Vidéo 4</h4><iframe src="https://www.youtube.com/embed/9bZkp7q19f0" allowfullscreen></iframe><button onclick="addMoney(4)">J'ai fini de regarder + 3200f</button><div class="prix">+ 3200f</div></div>
+    
+    <div class="video-box"><h4>Vidéo 5</h4><iframe src="https://www.youtube.com/embed/k85mRPqvMbE" allowfullscreen></iframe><button onclick="addMoney(5)">J'ai fini de regarder + 3200f</button><div class="prix">+ 3200f</div></div>
+    
+    <div class="video-box"><h4>Vidéo 6</h4><iframe src="https://www.youtube.com/embed/L0MK7qz13bU" allowfullscreen></iframe><button onclick="addMoney(6)">J'ai fini de regarder + 3200f</button><div class="prix">+ 3200f</div></div>
+    
+    <div class="video-box"><h4>Vidéo 7</h4><iframe src="https://www.youtube.com/embed/OPf0YbXqDm0" allowfullscreen></iframe><button onclick="addMoney(7)">J'ai fini de regarder + 3200f</button><div class="prix">+ 3200f</div></div>
+    
+    <div class="video-box"><h4>Vidéo 8</h4><iframe src="https://www.youtube.com/embed/CevxZvSJLk8" allowfullscreen></iframe><button onclick="addMoney(8)">J'ai fini de regarder + 3200f</button><div class="prix">+ 3200f</div></div>
+    
+    <div class="video-box"><h4>Vidéo 9</h4><iframe src="https://www.youtube.com/embed/hT_nvWreIhg" allowfullscreen></iframe><button onclick="addMoney(9)">J'ai fini de regarder + 3200f</button><div class="prix">+ 3200f</div></div>
+    
+    <div class="video-box"><h4>Vidéo 10</h4><iframe src="https://www.youtube.com/embed/YQHsXMglC9A" allowfullscreen></iframe><button onclick="addMoney(10)">J'ai fini de regarder + 3200f</button><div class="prix">+ 3200f</div></div>
+  </div>
+</div>
+
+<script>
+  const MON_MDP = "Ousman2026!"; // CHANGE CE MOT DE PASSE
+  
+  function checkMdp() {
+    if(document.getElementById('mdp').value == MON_MDP) {
+      document.getElementById('login').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+      loadSolde();
+    } else { alert('❌ Mot de passe incorrect'); }
+  }
+  
+  function deconnexion() {
+    document.getElementById('login').style.display = 'block';
+    document.getElementById('app').style.display = 'none';
+    document.getElementById('mdp').value = '';
+  }
+  
+  let solde = parseInt(localStorage.getItem('soldeKoreOusman')) || 0;
+  function loadSolde() { document.getElementById('solde').innerText = solde.toLocaleString() + 'f'; }
+  
+  function addMoney(num) {
+    solde += 3200;
+    localStorage.setItem('soldeKoreOusman', solde);
+    loadSolde();
+    alert('✅ Vidéo ' + num + ' validée ! +3 200f ajouté\nNouveau solde: ' + solde.toLocaleString() + 'f');
+  }
+</script>
+</body>
+    </html>
